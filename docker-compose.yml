@@ -1,0 +1,19 @@
+version: "3.1"
+
+services:
+  modesecurity:
+    image: "owasp/modsecurity-crs"
+    restart: always
+    container_name: waf
+    volumes:
+      - "./conf/proxy.conf:/etc/httpd/conf.d/proxy.conf"
+      - "./conf/exclude.conf:/etc/httpd/modsecurity.d/exclude.conf"
+    networks:
+      server:
+        aliases:
+         - waf
+
+networks:
+  server:
+    external:
+      name: server
