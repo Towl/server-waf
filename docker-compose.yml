@@ -8,6 +8,7 @@ services:
     volumes:
       - "./conf/proxy.conf:/etc/httpd/conf.d/proxy.conf"
       - "./conf/exclude.conf:/etc/httpd/modsecurity.d/exclude.conf"
+      - "/var/log/docker/waf/httpd:/var/log/httpd"
     networks:
       server:
         aliases:
